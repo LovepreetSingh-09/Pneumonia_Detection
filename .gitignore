@@ -1,0 +1,8 @@
+
+.idea/.name
+*.iml
+*.pyc
+.ipynb_checkpoints/chest_x-rays-checkpoint.ipynb
+*.xml
+*.jpeg
+*.h5
