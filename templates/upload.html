@@ -1,0 +1,54 @@
+{% extends "layout.html" %}
+{% block body %}
+    <!-- Page Header -->
+    <header class="masthead" style="background-image: url('{{ url_for('static', filename='img/home-bg.jpg') }}')">
+      <div class="overlay"></div>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-md-10 mx-auto">
+            <div class="site-heading">
+              <span class="subheading"><h1>Pneumonia Detection Page</h1></span>
+              <br>
+               <span class="subheading"><h4>{{date}}</h4></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+    <!-- Main Content -->          
+
+
+<h1 style="padding-left:3em"> Upload X-Ray Image Below </h1><br>
+<form  style="padding-left:3em" action="/uploader" method="post" enctype="multipart/form-data">
+    <input type="file" class="btn btn-primary" id="pic" name="img_file"
+          accept=".jpg, .jpeg, .png">
+  <button type="submit" class="btn btn-primary"> Submit </button><br>
+  <h6 style="font: caption; color: grey;"> Upload files with .jpg, .jpeg or .png extensions </h6> 
+</form>
+
+
+<br>
+<div style="padding-left:5em">
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Result</th>
+      <th scope="col">Confidence</th>
+    </tr>
+  </thead>
+ <!-- {% for post in posts %}
+  <tbody>
+    <tr>
+      <th scope="row">{{post.sno}}</th>
+      <td>{{post.title}}</td>
+      <td>{{post.date}}</td>
+      <td><a href='/edit/{{post.sno}}'> <button  class="btn btn-primary">Edit</button></td></a>
+      <td><a href='/delete/{{post.sno}}'><button class="btn btn-primary">Delete</button></td></a>
+   </tbody>
+   {% endfor %}-->
+ </table></div>
+   
+        
+  {% endblock %}
+
+
