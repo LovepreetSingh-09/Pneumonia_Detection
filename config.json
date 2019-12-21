@@ -1,0 +1,11 @@
+{
+  "params":
+  {
+    "local_server": "True",
+    "blog_name": "AI Minds",
+    "blog_theme": "Experience the Power of AI",
+    "about_text": "Hello and welcome to all of you to this website. This website is all about the deep learning and machine learning stuff. The models are deployed on this website to test for the production purposes.",
+    "no_of_posts": 6,
+    "upload_loc":"C:\\Users\\user\\Documents\\Spyder\\Projects\\Project--Chest_X-rays\\static\\data_img"
+  }
+}
