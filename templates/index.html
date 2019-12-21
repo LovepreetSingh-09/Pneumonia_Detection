@@ -1,0 +1,43 @@
+{% extends "layout.html" %}
+{% block body %}
+    <!-- Page Header -->
+    <header class="masthead" style="background-image: url('{{ url_for('static', filename='img/home-bg.jpg') }}')">
+      <div class="overlay"></div>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-md-10 mx-auto">
+            <div class="site-heading">
+              <h1>{{params["blog_name"]}}</h1>
+              <span class="subheading">{{params["blog_theme"]}}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+
+          <!-- Todo : Fetch it using for loop from database-->
+          <div class="post-preview">
+            <a href="/post/detect">
+              <h2 class="post-title">
+                Pneumonia Detection
+              </h2>
+              <h3 class="post-subtitle">
+                Check pneumonia using x-ray images of lungs
+              </h3>
+            </a>
+            <p class="post-meta">Posted by
+              <a href="#">Admin</a>
+                  </p>
+          </div>
+          <a href='/post/detect'><img style='height: 250px' src="{{url_for('static',filename='img/pneumonia_cover.jpg')}}"> </a>
+          <hr>
+          </div>
+        </div>
+      </div>
+    </div>
+  {% endblock %}
