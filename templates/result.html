@@ -1,0 +1,40 @@
+{% extends "layout.html" %}
+{% block body %}
+    <!-- Page Header -->
+    <header class="masthead" style="background-image: url('{{ url_for('static', filename='img/home-bg.jpg') }}')">
+      <div class="overlay"></div>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-md-10 mx-auto">
+            <div class="site-heading">
+              <span class="subheading"><h1>Results</h1></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <div style="padding-left:15em">
+      {% set fname = 'data_img/'+filename %}
+      <img style="width: 30em" src="{{url_for('static',filename=fname)}}"> 
+    </div>
+
+  <br>
+  <br>
+<div style="padding-left:5em">
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Result</th>
+      <th scope="col">Confidence</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td scope="row">{{result}}</td>
+      <td scope="row">{{confidence}} %</td>
+      <td style="padding-left:5em"><a href='/'> <button  class="btn btn-primary">Home</button></td></a>
+   </tbody>
+ </table></div>
+
+  {% endblock %}
