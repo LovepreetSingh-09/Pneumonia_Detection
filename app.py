@@ -7,6 +7,7 @@ from datetime import datetime
 import os
 from PIL import Image
 
+
 def img_preprocess(img):
     size=(156,156)
     im=Image.open(img).resize(size,Image.ANTIALIAS)
@@ -23,6 +24,7 @@ def load_init():
     idx_2_labels = {0:'NORMAL', 1:'PNEUMONIA'}
     size=(156,156)
     return m, idx_2_labels, size
+
 
 def predict(img_array):
     model, idx_2_labels, size = load_init()
