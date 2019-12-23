@@ -6,10 +6,11 @@ import os
 import tensorflow as tf
 from tensorflow.keras.layers import Dense, Flatten
 from tensorflow.keras.models import Model, load_model
-from tensorflow.keras.callbacks import ModelCheckpoint, ReduceLROnPlateau, EarlyStopping
+from tensorflow.keras.callbacks import ModelCheckpoint, ReduceLROnPlateau
 from tensorflow.keras.utils import to_categorical
 from tensorflow.keras.preprocessing.image import ImageDataGenerator
 import tensorflow.keras.backend as k
+from tensorflow.keras.optimizers import Adam
 from tensorflow.keras.applications.resnet_v2 import ResNet50V2
 import matplotlib.pyplot as plt
 from sklearn.metrics import confusion_matrix, accuracy_score
@@ -115,10 +116,9 @@ def train_generator(train_it,valid_it,save_dir):
     filepath = os.path.join(save_dir, model_name)
     
     checkpoint = ModelCheckpoint(filepath, verbose=1, monitor='val_loss',save_best_only=True, mode='auto')  
-    early_stop = EarlyStopping(monitor='val_acc', min_delta=0.1, patience=3, mode='min')
-    lr_reducer=ReduceLROnPlateau(factor=np.sqrt(0.1),cooldown=0,patience=5,
-                                 monitor='val_acc',min_lr=0.5e-06,verbose=1)
-    callbacks = [lr_reducer,early_stop,checkpoint]
+    lr_reducer=ReduceLROnPlateau(factor=np.sqrt(0.1),cooldown=0,patience=2,
+                                 monitor='val_loss',min_lr=0.5e-06,verbose=1)
+    callbacks = [lr_reducer,checkpoint]
     
     base_model = ResNet50V2(weights='imagenet', include_top=False,
                           input_shape=image_shape)
@@ -135,9 +135,9 @@ def train_generator(train_it,valid_it,save_dir):
     model = Model(inputs=base_model.input, outputs=outputs)
     
     model.summary()
-    
+    optimizer=Adam(lr=0.00001)
     model.compile(loss='binary_crossentropy',
-                  optimizer='adam', metrics=['accuracy'])
+                  optimizer=optimizer, metrics=['accuracy'])
     
     
     model.fit_generator(train_it,validation_data=valid_it,epochs=10,callbacks=callbacks)
@@ -146,7 +146,7 @@ def train_generator(train_it,valid_it,save_dir):
 save_dir = os.path.join(os.getcwd(), 'saved_models')
 save_dir
 
-train_generator(train_it,test_it.save_dir,image_shape)
+train_generator(train_it,test_it,save_dir)
 
 model_loc='model2-006-0.89.h5'
 m=load_model(os.path.join(save_dir,model_loc))
