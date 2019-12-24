@@ -3,6 +3,8 @@ import numpy as np
 from PIL import Image
 from glob import iglob, glob
 import os
+import matplotlib.pyplot as plt
+
 import tensorflow as tf
 from tensorflow.keras.layers import Dense, Flatten
 from tensorflow.keras.models import Model, load_model
@@ -12,7 +14,7 @@ from tensorflow.keras.preprocessing.image import ImageDataGenerator
 import tensorflow.keras.backend as k
 from tensorflow.keras.optimizers import Adam
 from tensorflow.keras.applications.resnet_v2 import ResNet50V2
-import matplotlib.pyplot as plt
+
 from sklearn.metrics import confusion_matrix, accuracy_score
 
 tf.__version__
