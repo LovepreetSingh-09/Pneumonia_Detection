@@ -185,7 +185,7 @@ f1=2*precision*recall/(precision+recall)
 print('\nF1_Score.....\n\t',np.round(f1,4))
 
 y=x_test[0].reshape(1,156,156,3)
-m.predict(y)
+print(m.predict(y))
 
 
 
