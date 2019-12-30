@@ -5,6 +5,7 @@ from glob import iglob, glob
 import os
 import matplotlib.pyplot as plt
 
+# Keras from Tensorflow for building Model
 import tensorflow as tf
 from tensorflow.keras.layers import Dense, Flatten
 from tensorflow.keras.models import Model, load_model
@@ -15,6 +16,7 @@ import tensorflow.keras.backend as k
 from tensorflow.keras.optimizers import Adam
 from tensorflow.keras.applications.resnet_v2 import ResNet50V2
 
+# For Evaluation 
 from sklearn.metrics import confusion_matrix, accuracy_score
 
 tf.__version__
